@@ -1,0 +1,15 @@
+import '../review_screen/widgets/ninetysix_item_widget.dart';import '../review_screen/widgets/reviewfilter_item_widget.dart';import 'package:flutter/material.dart';import 'package:la_noche/core/app_export.dart';import 'package:la_noche/widgets/app_bar/appbar_leading_image.dart';import 'package:la_noche/widgets/app_bar/appbar_title.dart';import 'package:la_noche/widgets/app_bar/appbar_trailing_iconbutton.dart';import 'package:la_noche/widgets/app_bar/custom_app_bar.dart';class ReviewScreen extends StatelessWidget {const ReviewScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(context), body: SizedBox(width: double.maxFinite, child: Column(children: [SizedBox(height: 26.v), _buildReviewFilter(context), SizedBox(height: 37.v), _buildRatingHeader(context), SizedBox(height: 18.v), _buildNinetySix(context)])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) { return CustomAppBar(height: 53.v, leadingWidth: 52.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowDown, margin: EdgeInsets.only(left: 24.h, top: 11.v, bottom: 14.v), onTap: () {onTapArrowDown(context);}), title: AppbarTitle(text: "Review", margin: EdgeInsets.only(left: 16.h)), actions: [AppbarTrailingIconbutton(imagePath: ImageConstant.imgSettingsWhiteA700, margin: EdgeInsets.fromLTRB(24.h, 11.v, 24.h, 14.v))]); } 
+/// Section Widget
+Widget _buildReviewFilter(BuildContext context) { return Align(alignment: Alignment.centerRight, child: SizedBox(height: 38.v, child: ListView.separated(padding: EdgeInsets.only(left: 24.h), scrollDirection: Axis.horizontal, separatorBuilder: (context, index) {return SizedBox(width: 8.h);}, itemCount: 6, itemBuilder: (context, index) {return ReviewfilterItemWidget();}))); } 
+/// Section Widget
+Widget _buildRatingHeader(BuildContext context) { return Padding(padding: EdgeInsets.symmetric(horizontal: 24.h), child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [Text("Rating", style: CustomTextStyles.titleMediumSemiBold), Spacer(), CustomImageView(imagePath: ImageConstant.imgSignalYellowA700, height: 16.adaptSize, width: 16.adaptSize, margin: EdgeInsets.only(bottom: 4.v)), Padding(padding: EdgeInsets.only(left: 8.h), child: Text("4.8", style: CustomTextStyles.titleMediumPrimarySemiBold))])), Padding(padding: EdgeInsets.only(left: 12.h, bottom: 3.v), child: Text("(4,981 reviews)", style: CustomTextStyles.bodyMediumWhiteA700))])); } 
+/// Section Widget
+Widget _buildNinetySix(BuildContext context) { return Expanded(child: Padding(padding: EdgeInsets.symmetric(horizontal: 24.h), child: ListView.separated(physics: BouncingScrollPhysics(), shrinkWrap: true, separatorBuilder: (context, index) {return SizedBox(height: 20.v);}, itemCount: 5, itemBuilder: (context, index) {return NinetysixItemWidget();}))); } 
+
+/// Navigates back to the previous screen.
+onTapArrowDown(BuildContext context) { Navigator.pop(context); } 
+ }
