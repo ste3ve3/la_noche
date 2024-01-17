@@ -194,7 +194,7 @@ class SignInScreen extends StatelessWidget {
   }
 
   onTapSignInButton(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.homeScreenContainerScreen);
+    Navigator.pushNamed(context, AppRoutes.buyMembershipScreen);
   }
 
   onTapTxtForgotThePassword(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:la_noche/presentation/booking_completed_page/booking_completed_page.dart';
+import 'package:la_noche/presentation/buy_membership_screen/buy_membership_screen.dart';
 import 'package:la_noche/presentation/welcome_screen/welcome_screen.dart';
 import 'package:la_noche/presentation/onboarding_one_screen/onboarding_one_screen.dart';
 import 'package:la_noche/presentation/onboarding_two_screen/onboarding_two_screen.dart';
@@ -48,6 +49,8 @@ class AppRoutes {
   static const String signUpBlankScreen = '/sign_up_blank_screen';
 
   static const String signInScreen = '/sign_in_screen';
+
+  static const String buyMembershipScreen = '/buy_membership_screen';
 
   static const String fillProfileScreen = '/fill_profile_screen';
 
@@ -128,6 +131,7 @@ class AppRoutes {
     onboardingThreeScreen: (context) => OnboardingThreeScreen(),
     signUpBlankScreen: (context) => SignUpBlankScreen(),
     signInScreen: (context) => SignInScreen(),
+    buyMembershipScreen: (context) => BuyMembershipScreen(),
     fillProfileScreen: (context) => FillProfileScreen(),
     forgotPasswordScreen: (context) => ForgotPasswordScreen(),
     forgotPasswordTypeOtpScreen: (context) => ForgotPasswordTypeOtpScreen(),
