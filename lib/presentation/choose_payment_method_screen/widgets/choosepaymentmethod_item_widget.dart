@@ -18,7 +18,7 @@ class ChoosepaymentmethodItemWidget extends StatelessWidget {
       child: Row(
         children: [
           CustomImageView(
-            imagePath: ImageConstant.imgFrameLightBlue600,
+            imagePath: ImageConstant.imgImage27x44,
             height: 32.adaptSize,
             width: 32.adaptSize,
           ),
@@ -29,7 +29,7 @@ class ChoosepaymentmethodItemWidget extends StatelessWidget {
               bottom: 2.v,
             ),
             child: Text(
-              "Paypal",
+              "Debit / Credit Card",
               style: theme.textTheme.titleMedium,
             ),
           ),

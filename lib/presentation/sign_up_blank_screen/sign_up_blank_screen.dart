@@ -134,18 +134,35 @@ class SignUpBlankScreen extends StatelessWidget {
           obscureText: true,
           contentPadding: EdgeInsets.symmetric(vertical: 21.v)),
       SizedBox(height: 24.v),
-      Align(
-          alignment: Alignment.centerLeft,
-          child: CustomCheckboxButton(
-              alignment: Alignment.centerLeft,
-              text: "Remember me",
-              value: rememberme,
-              padding: EdgeInsets.symmetric(vertical: 2.v),
-              onChange: (value) {
-                rememberme = value;
-              })),
+      CustomTextFormField(
+          autofocus: false,
+          controller: passwordController,
+          hintText: "Repeat Password",
+          textInputAction: TextInputAction.done,
+          textInputType: TextInputType.visiblePassword,
+          prefix: Container(
+              margin: EdgeInsets.fromLTRB(20.h, 20.v, 12.h, 20.v),
+              child: CustomImageView(
+                  imagePath: ImageConstant.imgLocation,
+                  height: 20.adaptSize,
+                  width: 20.adaptSize)),
+          prefixConstraints: BoxConstraints(maxHeight: 60.v),
+          suffix: Container(
+              margin: EdgeInsets.fromLTRB(30.h, 20.v, 20.h, 20.v),
+              child: CustomImageView(
+                  imagePath: ImageConstant.imgEyeBlueGray100,
+                  height: 20.adaptSize,
+                  width: 20.adaptSize)),
+          suffixConstraints: BoxConstraints(maxHeight: 60.v),
+          obscureText: true,
+          contentPadding: EdgeInsets.symmetric(vertical: 21.v)),
               SizedBox(height: 24.v),
-              CustomElevatedButton(text: "Sign Up"),
+              CustomElevatedButton(
+                text: "Sign Up",
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.fillProfileScreen);
+                },
+              ),
     ]);
   }
 

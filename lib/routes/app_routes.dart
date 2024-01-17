@@ -4,13 +4,11 @@ import 'package:la_noche/presentation/welcome_screen/welcome_screen.dart';
 import 'package:la_noche/presentation/onboarding_one_screen/onboarding_one_screen.dart';
 import 'package:la_noche/presentation/onboarding_two_screen/onboarding_two_screen.dart';
 import 'package:la_noche/presentation/onboarding_three_screen/onboarding_three_screen.dart';
-import 'package:la_noche/presentation/let_s_you_in_screen/let_s_you_in_screen.dart';
 import 'package:la_noche/presentation/sign_up_blank_screen/sign_up_blank_screen.dart';
 import 'package:la_noche/presentation/sign_in_screen/sign_in_screen.dart';
 import 'package:la_noche/presentation/fill_profile_screen/fill_profile_screen.dart';
 import 'package:la_noche/presentation/forgot_password_screen/forgot_password_screen.dart';
 import 'package:la_noche/presentation/forgot_password_type_otp_screen/forgot_password_type_otp_screen.dart';
-import 'package:la_noche/presentation/forgot_password_filled_type_screen/forgot_password_filled_type_screen.dart';
 import 'package:la_noche/presentation/create_new_password_screen/create_new_password_screen.dart';
 import 'package:la_noche/presentation/home_screen_container_screen/home_screen_container_screen.dart';
 import 'package:la_noche/presentation/recently_booked_screen/recently_booked_screen.dart';
@@ -47,8 +45,6 @@ class AppRoutes {
 
   static const String onboardingThreeScreen = '/onboarding_three_screen';
 
-  static const String letSYouInScreen = '/let_s_you_in_screen';
-
   static const String signUpBlankScreen = '/sign_up_blank_screen';
 
   static const String signInScreen = '/sign_in_screen';
@@ -59,9 +55,6 @@ class AppRoutes {
 
   static const String forgotPasswordTypeOtpScreen =
       '/forgot_password_type_otp_screen';
-
-  static const String forgotPasswordFilledTypeScreen =
-      '/forgot_password_filled_type_screen';
 
   static const String createNewPasswordScreen = '/create_new_password_screen';
 
@@ -133,14 +126,11 @@ class AppRoutes {
     onboardingOneScreen: (context) => OnboardingOneScreen(),
     onboardingTwoScreen: (context) => OnboardingTwoScreen(),
     onboardingThreeScreen: (context) => OnboardingThreeScreen(),
-    letSYouInScreen: (context) => LetSYouInScreen(),
     signUpBlankScreen: (context) => SignUpBlankScreen(),
     signInScreen: (context) => SignInScreen(),
     fillProfileScreen: (context) => FillProfileScreen(),
     forgotPasswordScreen: (context) => ForgotPasswordScreen(),
     forgotPasswordTypeOtpScreen: (context) => ForgotPasswordTypeOtpScreen(),
-    forgotPasswordFilledTypeScreen: (context) =>
-        ForgotPasswordFilledTypeScreen(),
     createNewPasswordScreen: (context) => CreateNewPasswordScreen(),
     homeScreenContainerScreen: (context) => HomeScreenContainerScreen(),
     recentlyBookedScreen: (context) => RecentlyBookedScreen(),

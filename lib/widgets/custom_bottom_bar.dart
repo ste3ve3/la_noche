@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:la_noche/core/app_export.dart';
 
+// ignore: must_be_immutable
 class CustomBottomBar extends StatefulWidget {
   CustomBottomBar({this.onChanged});
 
@@ -15,27 +15,27 @@ class CustomBottomBarState extends State<CustomBottomBar> {
 
   List<BottomMenuModel> bottomMenuList = [
     BottomMenuModel(
-      icon: ImageConstant.imgNavHomePrimary,
-      activeIcon: ImageConstant.imgNavHomePrimary,
+      icon: Icons.home,
+      activeIcon: Icons.home,
       title: "Home",
       type: BottomBarEnum.Home,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgNavSearch,
-      activeIcon: ImageConstant.imgNavSearch,
+      icon: Icons.search,
+      activeIcon: Icons.search,
       title: "Search",
       type: BottomBarEnum.Search,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgNavBookingBlueGray100,
-      activeIcon: ImageConstant.imgNavBookingBlueGray100,
+      icon: Icons.book,
+      activeIcon: Icons.book,
       title: "Booking",
       type: BottomBarEnum.Booking,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgNavProfile,
-      activeIcon: ImageConstant.imgNavProfile,
-      title: "Profile",
+      icon: Icons.settings,
+      activeIcon: Icons.settings,
+      title: "Settings",
       type: BottomBarEnum.Profile,
     )
   ];
@@ -43,66 +43,32 @@ class CustomBottomBarState extends State<CustomBottomBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90.v,
+      height: 90,
       decoration: BoxDecoration(
-        color: appTheme.black900,
+        color: Colors.black,
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(16.h),
+          top: Radius.circular(16),
         ),
       ),
       child: BottomNavigationBar(
         backgroundColor: Colors.transparent,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedFontSize: 0,
+        showSelectedLabels: true, 
+        showUnselectedLabels: true, 
+        unselectedItemColor: Colors.grey,
         elevation: 0,
         currentIndex: selectedIndex,
         type: BottomNavigationBarType.fixed,
         items: List.generate(bottomMenuList.length, (index) {
           return BottomNavigationBarItem(
-            icon: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomImageView(
-                  imagePath: bottomMenuList[index].icon,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  color: appTheme.blueGray100,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 1.v),
-                  child: Text(
-                    bottomMenuList[index].title ?? "",
-                    style: CustomTextStyles.labelMediumBluegray100.copyWith(
-                      color: appTheme.blueGray100,
-                    ),
-                  ),
-                ),
-              ],
+            icon: Icon(
+              bottomMenuList[index].icon,
+              color: Colors.grey,
             ),
-            activeIcon: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomImageView(
-                  imagePath: bottomMenuList[index].activeIcon,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  color: theme.colorScheme.primary,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 2.v),
-                  child: Text(
-                    bottomMenuList[index].title ?? "",
-                    style: CustomTextStyles.labelMediumPrimary.copyWith(
-                      color: theme.colorScheme.primary,
-                    ),
-                  ),
-                ),
-              ],
+            activeIcon: Icon(
+              bottomMenuList[index].activeIcon,
+              color: Theme.of(context).primaryColor,
             ),
-            label: '',
+            label: bottomMenuList[index].title ?? "",
           );
         }),
         onTap: (index) {
@@ -130,9 +96,9 @@ class BottomMenuModel {
     required this.type,
   });
 
-  String icon;
+  IconData icon;
 
-  String activeIcon;
+  IconData activeIcon;
 
   String? title;
 

@@ -67,7 +67,7 @@ class SearchPageTabContainerPageState extends State<SearchPageTabContainerPage>
     );
   }
 
-  /// Section Widget
+  
   Widget _buildTabview(BuildContext context) {
     return Container(
       height: 38.v,
@@ -75,6 +75,8 @@ class SearchPageTabContainerPageState extends State<SearchPageTabContainerPage>
       child: TabBar(
         controller: tabviewController,
         isScrollable: true,
+        tabAlignment: TabAlignment.start,
+        labelPadding: EdgeInsets.zero,
         labelColor: appTheme.whiteA700,
         labelStyle: TextStyle(
           fontSize: 16.fSize,

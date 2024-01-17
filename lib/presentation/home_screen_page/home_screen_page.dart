@@ -1,3 +1,5 @@
+import 'package:la_noche/presentation/recently_booked_screen/recently_booked_screen.dart';
+
 import '../home_screen_page/widgets/hotels_item_widget.dart';
 import '../home_screen_page/widgets/sixty_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +38,7 @@ class HomeScreenPageState extends State<HomeScreenPage>
                 ])))));
   }
 
-  /// Section Widget
+  
   Widget _buildHotels(BuildContext context) {
     return SizedBox(
         height: 400.v,
@@ -51,7 +53,7 @@ class HomeScreenPageState extends State<HomeScreenPage>
             }));
   }
 
-  /// Section Widget
+  
   Widget _buildRecentlyBooked(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
@@ -87,6 +89,9 @@ class HomeScreenPageState extends State<HomeScreenPage>
 
   /// Navigates to the recentlyBookedScreen when the action is triggered.
   onTapTxtSeeAll(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.recentlyBookedScreen);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RecentlyBookedScreen()),
+    );
   }
 }

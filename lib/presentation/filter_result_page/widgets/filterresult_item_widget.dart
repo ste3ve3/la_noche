@@ -40,10 +40,10 @@ class FilterresultItemWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "President Hotel",
+                        "Lounge...",
                         style: theme.textTheme.titleLarge,
                       ),
-                      SizedBox(height: 18.v),
+                      SizedBox(height: 12.v),
                       Text(
                         "Kigali Airport",
                         style: theme.textTheme.bodyMedium,

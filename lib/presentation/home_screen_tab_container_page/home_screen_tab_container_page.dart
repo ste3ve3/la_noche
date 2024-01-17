@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:la_noche/core/app_export.dart';
 import 'package:la_noche/presentation/home_screen_page/home_screen_page.dart';
+import 'package:la_noche/presentation/my_bookmarks_screen/my_bookmarks_screen.dart';
+import 'package:la_noche/presentation/notifications_screen/notifications_screen.dart';
 import 'package:la_noche/widgets/app_bar/appbar_leading_image.dart';
 import 'package:la_noche/widgets/app_bar/appbar_title.dart';
-import 'package:la_noche/widgets/app_bar/appbar_trailing_iconbutton.dart';
 import 'package:la_noche/widgets/app_bar/appbar_trailing_image.dart';
 import 'package:la_noche/widgets/app_bar/custom_app_bar.dart';
 import 'package:la_noche/widgets/custom_search_view.dart';
@@ -67,7 +68,7 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
                     ])))));
   }
 
-  /// Section Widget
+  
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
         height: 76.v,
@@ -84,28 +85,30 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
             margin: EdgeInsets.all(0),
           ),
         ),
-        title:
-            AppbarTitle(text: "La noche", margin: EdgeInsets.only(top: 5)),
+        title: AppbarTitle(text: "La noche", margin: EdgeInsets.only(top: 5)),
         actions: [
           AppbarTrailingImage(
               imagePath: ImageConstant.imgIcons,
               margin: EdgeInsets.only(left: 24.h, top: 9.v, right: 11.h),
-              onTap: () {
-                onTapIcons(context);
-              }),
-          AppbarTrailingIconbutton(
-              imagePath: ImageConstant.imgSettingsWhiteA700,
-              margin: EdgeInsets.only(left: 20.h, top:9.v, right: 35.h))
+              onTap: onTapNotificationIcon,
+              ),
+          AppbarTrailingImage(
+              imagePath: ImageConstant.imgBookmark,
+              margin: EdgeInsets.only(left: 24.h, top: 9.v, right: 35.h),
+              onTap: onTapBookmarkIcon,
+              ),
         ]);
   }
 
-  /// Section Widget
+  
   Widget _buildTabview(BuildContext context) {
     return Container(
         height: 38.v,
         width: 376.h,
         child: TabBar(
             controller: tabviewController,
+            tabAlignment: TabAlignment.start,
+            isScrollable: true,
             labelPadding: EdgeInsets.zero,
             labelColor: appTheme.whiteA700,
             labelStyle: TextStyle(
@@ -121,32 +124,41 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
                 color: theme.colorScheme.primary,
                 borderRadius: BorderRadius.circular(19.h)),
             tabs: [
-              Tab(child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0), 
-                child: Text(
-                  "Recommended",
-                  overflow: TextOverflow.ellipsis,
-                )
-              )),
-              Tab(child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0), 
-                child: Text(
-                  "Popular",
-                  overflow: TextOverflow.ellipsis,
-                )
-              )),
-              Tab(child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0), 
-                child: Text(
-                  "Trending",
-                  overflow: TextOverflow.ellipsis,
-                )
-              ))
+              Tab(
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        "Recommended",
+                        overflow: TextOverflow.ellipsis,
+                      ))),
+              Tab(
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        "Popular",
+                        overflow: TextOverflow.ellipsis,
+                      ))),
+              Tab(
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        "Trending",
+                        overflow: TextOverflow.ellipsis,
+                      )))
             ]));
   }
 
   /// Navigates to the notificationsScreen when the action is triggered.
-  onTapIcons(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.notificationsScreen);
+  onTapNotificationIcon(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => NotificationsScreen()),
+    );
+  }
+  onTapBookmarkIcon(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MyBookmarksScreen()),
+    );
   }
 }

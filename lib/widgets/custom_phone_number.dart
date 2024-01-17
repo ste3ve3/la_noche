@@ -1,6 +1,5 @@
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
-import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:la_noche/core/app_export.dart';
 import 'package:la_noche/widgets/custom_text_form_field.dart';
@@ -20,7 +19,7 @@ class CustomPhoneNumber extends StatelessWidget {
 
   Function(Country) onTap;
 
-  TextEditingController? controller;
+  TextEditingController? controller = TextEditingController(text: "+250");
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +64,6 @@ class CustomPhoneNumber extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.only(
-                left: 15.h,
                 right: 6.h,
               ),
               child: CustomTextFormField(
@@ -91,7 +89,7 @@ class CustomPhoneNumber extends StatelessWidget {
             width: 60.h,
             child: Text(
               "+${country.phoneCode}",
-              style: TextStyle(fontSize: 14.fSize),
+              style: TextStyle(fontSize: 14.fSize, color: Colors.white),
             ),
           ),
           const SizedBox(width: 8.0),
@@ -104,17 +102,25 @@ class CustomPhoneNumber extends StatelessWidget {
         ],
       );
   void _openCountryPicker(BuildContext context) => showDialog(
-        context: context,
-        builder: (context) => CountryPickerDialog(
-          searchInputDecoration: InputDecoration(
-            hintText: 'Search...',
-            hintStyle: TextStyle(fontSize: 14.fSize),
-          ),
-          isSearchable: true,
-          title: Text('Select your phone code',
-              style: TextStyle(fontSize: 14.fSize)),
-          onValuePicked: (Country country) => onTap(country),
-          itemBuilder: _buildDialogItem,
+    context: context,
+    builder: (context) => Theme(
+      data: Theme.of(context).copyWith(dialogBackgroundColor: Color.fromARGB(255, 85, 83, 83)),
+      child: CountryPickerDialog(
+        searchInputDecoration: InputDecoration(
+          hintText: 'Search...',
+          hintStyle: TextStyle(fontSize: 14.fSize, color: Colors.white),
         ),
-      );
+        isSearchable: true,
+        title: Text(
+          'Select your phone code',
+          style: TextStyle(fontSize: 14.fSize, color: Colors.white),
+        ),
+         onValuePicked: (Country country) {
+        onTap(country);
+        controller?.text = "+${country.phoneCode} ";
+      },
+        itemBuilder: _buildDialogItem,
+      ),
+    ),
+  );
 }

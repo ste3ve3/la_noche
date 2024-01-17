@@ -38,7 +38,7 @@ class SearchTypeScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
+  
   Widget _buildSearchRecommendations(BuildContext context) {
     return Wrap(
       runSpacing: 12.v,
@@ -48,7 +48,7 @@ class SearchTypeScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
+  
   Widget _buildRecentSearches(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

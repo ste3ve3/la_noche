@@ -33,10 +33,10 @@ class NotificationsItemWidget extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(
                   right: 12.h,
-                  bottom: 16.v,
+                  top: 16.v,
                 ),
                 child: Text(
-                  "You have canceled your hotel booking",
+                  "You have canceled your booking",
                   style: CustomTextStyles.titleSmallGray40001,
                 ),
               ),
@@ -58,7 +58,7 @@ class NotificationsItemWidget extends StatelessWidget {
                       bottom: 39.v,
                     ),
                     child: Text(
-                      "Hotel Booking Canceled",
+                      "Lounge Booking Canceled",
                       style: theme.textTheme.titleMedium,
                     ),
                   ),

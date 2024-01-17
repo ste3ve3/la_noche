@@ -37,14 +37,14 @@ class FilterResultPageState extends State<FilterResultPage>
     );
   }
 
-  /// Section Widget
+  
   Widget _buildRecommendedSection(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.h),
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsets.only(
@@ -52,25 +52,11 @@ class FilterResultPageState extends State<FilterResultPage>
                   bottom: 3.v,
                 ),
                 child: Text(
-                  "Recommended (586,379)",
+                  "Recommended (86,379)",
                   style: theme.textTheme.titleMedium,
                 ),
               ),
-              Spacer(),
-              CustomIconButton(
-                height: 28.adaptSize,
-                width: 28.adaptSize,
-                padding: EdgeInsets.all(2.h),
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgUserPrimary28x28,
-                ),
-              ),
-              CustomImageView(
-                imagePath: ImageConstant.imgGrid,
-                height: 28.adaptSize,
-                width: 28.adaptSize,
-                margin: EdgeInsets.only(left: 12.h),
-              ),
+              
             ],
           ),
           SizedBox(height: 22.v),

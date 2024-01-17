@@ -11,7 +11,7 @@ class GalleryItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomImageView(
-      imagePath: ImageConstant.imgRectangle10,
+      imagePath: ImageConstant.imgRectangle7,
       height: 140.v,
       width: 182.h,
       radius: BorderRadius.circular(

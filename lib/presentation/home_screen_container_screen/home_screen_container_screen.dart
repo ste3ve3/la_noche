@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:la_noche/core/app_export.dart';
-import 'package:la_noche/presentation/booking_name_screen/booking_name_screen.dart';
 import 'package:la_noche/presentation/booking_ongoing_screen/booking_ongoing_screen.dart';
 import 'package:la_noche/presentation/home_screen_tab_container_page/home_screen_tab_container_page.dart';
 import 'package:la_noche/presentation/profile_settings_page/profile_settings_page.dart';
@@ -27,7 +26,7 @@ class HomeScreenContainerScreen extends StatelessWidget {
             bottomNavigationBar: _buildBottomBar(context)));
   }
 
-  /// Section Widget
+  
   Widget _buildBottomBar(BuildContext context) {
     return CustomBottomBar(onChanged: (BottomBarEnum type) {
       Navigator.pushNamed(navigatorKey.currentContext!, getCurrentRoute(type));

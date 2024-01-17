@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:la_noche/core/app_export.dart';
-import 'package:la_noche/widgets/app_bar/appbar_leading_iconbutton.dart';
+import 'package:la_noche/presentation/edit_profile_screen/edit_profile_screen.dart';
+import 'package:la_noche/presentation/notification_settings_screen/notification_settings_screen.dart';
+import 'package:la_noche/presentation/security_screen/security_screen.dart';
+import 'package:la_noche/widgets/app_bar/appbar_leading_image.dart';
 import 'package:la_noche/widgets/app_bar/appbar_title.dart';
 import 'package:la_noche/widgets/app_bar/appbar_trailing_iconbutton.dart';
 import 'package:la_noche/widgets/app_bar/custom_app_bar.dart';
-import 'package:la_noche/widgets/custom_switch.dart';
 
 // ignore_for_file: must_be_immutable
 class ProfileSettingsPage extends StatelessWidget {
@@ -19,7 +21,7 @@ class ProfileSettingsPage extends StatelessWidget {
             appBar: _buildAppBar(context),
             body: Container(
                 width: double.maxFinite,
-                padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 30.v),
+                padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 10.v),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -41,23 +43,34 @@ class ProfileSettingsPage extends StatelessWidget {
                                     style:
                                         CustomTextStyles.titleMediumSemiBold_1))
                           ])),
+                      // SizedBox(height: 30.v),
+                      // Row(children: [
+                      //   CustomImageView(
+                      //       imagePath: ImageConstant.imgIconlyCurvedWallet,
+                      //       height: 28.adaptSize,
+                      //       width: 28.adaptSize),
+                      //   Padding(
+                      //       padding: EdgeInsets.only(left: 20.h, top: 5.v),
+                      //       child: Text("Payment",
+                      //           style: CustomTextStyles.titleMediumSemiBold_1))
+                      // ]),
                       SizedBox(height: 30.v),
-                      Row(children: [
-                        CustomImageView(
-                            imagePath: ImageConstant.imgIconlyCurvedWallet,
-                            height: 28.adaptSize,
-                            width: 28.adaptSize),
-                        Padding(
-                            padding: EdgeInsets.only(left: 20.h, top: 5.v),
-                            child: Text("Payment",
-                                style: CustomTextStyles.titleMediumSemiBold_1))
-                      ]),
-                      SizedBox(height: 30.v),
-                      _buildDarkTheme(context,
-                          eyeImage: ImageConstant.imgIcons,
-                          darkThemeText: "Notifications", onTapDarkTheme: () {
-                        onTapDarkTheme(context);
-                      }),
+                      GestureDetector(
+                          onTap: () {
+                            onTapNotificationsButton(context);
+                          },
+                          child: Row(children: [
+                            CustomImageView(
+                                imagePath: ImageConstant.imgIcons,
+                                height: 28.adaptSize,
+                                width: 28.adaptSize),
+                            Padding(
+                                padding: EdgeInsets.only(
+                                    left: 20.h, top: 2.v, bottom: 3.v),
+                                child: Text("Notifications",
+                                    style:
+                                        CustomTextStyles.titleMediumSemiBold_1))
+                          ])),
                       SizedBox(height: 30.v),
                       GestureDetector(
                           onTap: () {
@@ -77,19 +90,6 @@ class ProfileSettingsPage extends StatelessWidget {
                       SizedBox(height: 30.v),
                       Row(children: [
                         CustomImageView(
-                            imagePath: ImageConstant.imgIconlyCurvedInfo,
-                            height: 28.adaptSize,
-                            width: 28.adaptSize),
-                        Padding(
-                            padding: EdgeInsets.only(left: 20.h, top: 5.v),
-                            child: Text("Help",
-                                style: CustomTextStyles.titleMediumSemiBold_1))
-                      ]),
-                      SizedBox(height: 30.v),
-                      _buildDarkTheme3(context),
-                      SizedBox(height: 30.v),
-                      Row(children: [
-                        CustomImageView(
                             imagePath: ImageConstant.imgUserRed400,
                             height: 28.adaptSize,
                             width: 28.adaptSize),
@@ -102,35 +102,39 @@ class ProfileSettingsPage extends StatelessWidget {
                     ]))));
   }
 
-  /// Section Widget
+  
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
-        height: 50.v,
-        leadingWidth: 56.h,
-        leading: AppbarLeadingIconbutton(
-            imagePath: ImageConstant.imgFloatingIconWhiteA700,
-            margin: EdgeInsets.only(left: 24.h, top: 9.v, bottom: 9.v),
-            onTap: () {
-              onTapFloatingIcon(context);
-            }),
+        height: 76.v,
+        leadingWidth: 76.h,
+        leading: Container(
+          margin: EdgeInsets.only(left: 17, top: 5, right: 8),
+          width: 150,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: theme.colorScheme.primary,
+          ),
+          child: AppbarLeadingImage(
+            imagePath: ImageConstant.imgFloatingIcon,
+            margin: EdgeInsets.all(0),
+          ),
+        ),
         title:
-            AppbarTitle(text: "Profile", margin: EdgeInsets.only(left: 16.h)),
-        actions: [
-          AppbarTrailingIconbutton(
-              imagePath: ImageConstant.imgSettingsWhiteA700,
-              margin: EdgeInsets.symmetric(horizontal: 24.h, vertical: 11.v))
-        ]);
+            AppbarTitle(text: "Settings", margin: EdgeInsets.only(top: 5)),
+        );
   }
 
-  /// Section Widget
+  
   Widget _buildProfile(BuildContext context) {
-    return Column(children: [
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
       SizedBox(
           height: 120.adaptSize,
           width: 120.adaptSize,
           child: Stack(alignment: Alignment.bottomRight, children: [
             CustomImageView(
-                imagePath: ImageConstant.imgEllipse120x120,
+                imagePath: ImageConstant.imgEllipse,
                 height: 120.adaptSize,
                 width: 120.adaptSize,
                 radius: BorderRadius.circular(60.h),
@@ -142,52 +146,10 @@ class ProfileSettingsPage extends StatelessWidget {
                 alignment: Alignment.bottomRight)
           ])),
       SizedBox(height: 10.v),
-      Text("Daniel Austin", style: theme.textTheme.headlineSmall),
+      Text("Steve Ndicunguye", style: theme.textTheme.headlineSmall),
       SizedBox(height: 11.v),
-      Text("uder@domain.com", style: theme.textTheme.titleSmall)
+      Text("ndicunguyesteve4@gmail.com", style: theme.textTheme.titleSmall)
     ]);
-  }
-
-  /// Section Widget
-  Widget _buildDarkTheme3(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      _buildDarkTheme(context,
-          eyeImage: ImageConstant.imgEyeWhiteA70028x28,
-          darkThemeText: "Dark Theme"),
-      CustomSwitch(
-          value: isSelectedSwitch,
-          onChange: (value) {
-            isSelectedSwitch = value;
-          })
-    ]);
-  }
-
-  /// Common widget
-  Widget _buildDarkTheme(
-    BuildContext context, {
-    required String eyeImage,
-    required String darkThemeText,
-    Function? onTapDarkTheme,
-  }) {
-    return GestureDetector(
-        onTap: () {
-          onTapDarkTheme!.call();
-        },
-        child: SizedBox(
-            width: 148.h,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomImageView(
-                      imagePath: eyeImage,
-                      height: 28.adaptSize,
-                      width: 28.adaptSize),
-                  Padding(
-                      padding: EdgeInsets.only(top: 2.v, bottom: 3.v),
-                      child: Text(darkThemeText,
-                          style: CustomTextStyles.titleMediumSemiBold_1
-                              .copyWith(color: appTheme.whiteA700)))
-                ])));
   }
 
   /// Opens a URL in the device's default web browser.
@@ -204,16 +166,25 @@ class ProfileSettingsPage extends StatelessWidget {
 
   /// Navigates to the editProfileScreen when the action is triggered.
   onTapLock(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.editProfileScreen);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => EditProfileScreen()),
+    );
   }
 
   /// Navigates to the notificationSettingsScreen when the action is triggered.
-  onTapDarkTheme(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.notificationSettingsScreen);
+  onTapNotificationsButton(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => NotificationSettingsScreen()),
+    );
   }
 
   /// Navigates to the securityScreen when the action is triggered.
   onTapIconlyCurvedShield(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.securityScreen);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SecurityScreen()),
+    );
   }
 }

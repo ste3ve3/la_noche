@@ -51,12 +51,6 @@ class AppNavigationScreen extends StatelessWidget {
                         ),
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Let\\'s You In",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.letSYouInScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
                           screenTitle: "Sign Up (Blank)",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.signUpBlankScreen),
@@ -84,12 +78,6 @@ class AppNavigationScreen extends StatelessWidget {
                           screenTitle: "Forgot Password - Type OTP",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.forgotPasswordTypeOtpScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "Forgot Password - Filled Type",
-                          onTapScreenTitle: () => onTapScreenTitle(context,
-                              AppRoutes.forgotPasswordFilledTypeScreen),
                         ),
                         _buildScreenTitle(
                           context,
@@ -241,7 +229,7 @@ class AppNavigationScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
+  
   Widget _buildAppNavigation(BuildContext context) {
     return Container(
       decoration: BoxDecoration(

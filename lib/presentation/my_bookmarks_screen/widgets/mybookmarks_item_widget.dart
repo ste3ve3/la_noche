@@ -17,7 +17,7 @@ class MybookmarksItemWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 18.h,
-        vertical: 20.v,
+        vertical: 16.v,
       ),
       decoration: AppDecoration.outlineBlackC.copyWith(
         borderRadius: BorderRadiusStyle.roundedBorder20,
@@ -35,12 +35,12 @@ class MybookmarksItemWidget extends StatelessWidget {
             ),
             margin: EdgeInsets.only(left: 1.h),
           ),
-          SizedBox(height: 19.v),
+          SizedBox(height: 5.v),
           Container(
             width: 129.h,
             margin: EdgeInsets.only(left: 2.h),
             child: Text(
-              "De Paris Monte-Carlo Hotel",
+              "Kigali Airport lounge",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.titleMedium!.copyWith(

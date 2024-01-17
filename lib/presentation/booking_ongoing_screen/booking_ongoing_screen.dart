@@ -1,3 +1,9 @@
+import 'package:la_noche/presentation/booking_cancelled_screen/booking_cancelled_screen.dart';
+import 'package:la_noche/presentation/booking_completed_page/booking_completed_page.dart';
+import 'package:la_noche/presentation/booking_name_screen/booking_name_screen.dart';
+import 'package:la_noche/presentation/refund_method_screen/refund_method_screen.dart';
+import 'package:la_noche/presentation/search_page/search_page.dart';
+import 'package:la_noche/presentation/view_ticket_screen/view_ticket_screen.dart';
 import 'package:la_noche/widgets/app_bar/appbar_leading_image.dart';
 import 'package:la_noche/widgets/custom_elevated_button.dart';
 
@@ -27,7 +33,7 @@ class BookingOngoingScreen extends StatelessWidget {
                   SizedBox(height: 30.v),
                   _buildMyBookings(context),
                   SizedBox(height: 30.v),
-                  _buildTickets(context)
+                  Expanded(child: _buildTickets(context))
                 ]))));
   }
 
@@ -48,7 +54,10 @@ class BookingOngoingScreen extends StatelessWidget {
               child: Icon(Icons.add, color: Colors.white),
             ),
             onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.bookingNameScreen);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BookingNameScreen()),
+              );
             },
           ),
         ),
@@ -78,9 +87,7 @@ class BookingOngoingScreen extends StatelessWidget {
           AppbarTrailingImage(
             imagePath: ImageConstant.imgRewind,
             margin: EdgeInsets.symmetric(horizontal: 24.h, vertical: 11.v),
-            onTap: () {
-              Navigator.pushNamed(context, AppRoutes.searchPage);
-            },
+            onTap: onTapSearchIcon,
           ),
         ]);
   }
@@ -96,8 +103,10 @@ class BookingOngoingScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 6.h, top: 3.v),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, AppRoutes.bookingOngoingScreen);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BookingOngoingScreen()),
+                      );
                     },
                     child: Text("Ongoing",
                         style: CustomTextStyles.titleMediumSemiBold),
@@ -107,8 +116,10 @@ class BookingOngoingScreen extends StatelessWidget {
                   padding: EdgeInsets.only(top: 3.v),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, AppRoutes.bookingCompletedPage);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BookingCompletedPage()),
+                      );
                     },
                     child: Text("Completed",
                         style: CustomTextStyles.titleMediumPrimarySemiBold),
@@ -118,8 +129,10 @@ class BookingOngoingScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 2.v),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, AppRoutes.bookingCancelledScreen);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BookingCancelledScreen()),
+                      );
                     },
                     child: Text("Cancelled",
                         style: CustomTextStyles.titleMediumPrimarySemiBold),
@@ -129,8 +142,8 @@ class BookingOngoingScreen extends StatelessWidget {
 
   Widget _buildTickets(BuildContext context) {
     return ListView.separated(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        shrinkWrap: false,
         separatorBuilder: (context, index) {
           return Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0.v),
@@ -139,7 +152,7 @@ class BookingOngoingScreen extends StatelessWidget {
                   child: Divider(
                       height: 1.v, thickness: 1.v, color: appTheme.gray700)));
         },
-        itemCount: 2,
+        itemCount: 5,
         itemBuilder: (context, index) {
           return Tickets1ItemWidget(onTapCancelBookingButton: () {
             onTapCancelBookingButton(context);
@@ -150,11 +163,24 @@ class BookingOngoingScreen extends StatelessWidget {
   }
 
   onTapCancelBookingButton(BuildContext context) {
-    // TODO: implement Actions
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RefundMethodScreen()),
+    );
   }
 
   /// Navigates to the viewTicketScreen when the action is triggered.
   onTapViewTicketButton(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.viewTicketScreen);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ViewTicketScreen()),
+    );
+  }
+
+  onTapSearchIcon(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SearchPage()),
+    );
   }
 }

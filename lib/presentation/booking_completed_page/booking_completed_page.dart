@@ -1,3 +1,7 @@
+import 'package:la_noche/presentation/booking_cancelled_screen/booking_cancelled_screen.dart';
+import 'package:la_noche/presentation/booking_name_screen/booking_name_screen.dart';
+import 'package:la_noche/presentation/booking_ongoing_screen/booking_ongoing_screen.dart';
+import 'package:la_noche/presentation/search_page/search_page.dart';
 import 'package:la_noche/widgets/app_bar/appbar_leading_image.dart';
 import 'package:la_noche/widgets/custom_elevated_button.dart';
 
@@ -33,7 +37,7 @@ class BookingCompletedPage extends StatelessWidget {
               SizedBox(height: 30.v),
               _buildMyBookings(context),
               SizedBox(height: 30.v),
-              _buildTickets(context),
+              Expanded(child: _buildTickets(context)),
             ],
           ),
         ),
@@ -58,7 +62,10 @@ Stack _bookNewLoungeButton(BuildContext context) {
               child: Icon(Icons.add, color: Colors.white),
             ),
             onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.bookingNameScreen);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BookingNameScreen()),
+              );
             },
           ),
         ),
@@ -91,6 +98,7 @@ Stack _bookNewLoungeButton(BuildContext context) {
             horizontal: 24.h,
             vertical: 11.v,
           ),
+          onTap: onTapSearchIcon,
         ),
       ],
     );
@@ -111,9 +119,17 @@ Stack _bookNewLoungeButton(BuildContext context) {
               left: 6.h,
               top: 3.v,
             ),
-            child: Text(
-              "Ongoing",
-              style: CustomTextStyles.titleMediumPrimarySemiBold,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookingOngoingScreen()),
+                );
+              },
+              child: Text(
+                "Ongoing",
+                style: CustomTextStyles.titleMediumPrimarySemiBold,
+              ),
             ),
           ),
           Spacer(
@@ -121,9 +137,17 @@ Stack _bookNewLoungeButton(BuildContext context) {
           ),
           Padding(
             padding: EdgeInsets.only(top: 3.v),
-            child: Text(
-              "Completed",
-              style: CustomTextStyles.titleMediumSemiBold,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookingCompletedPage()),
+                );
+              },
+              child: Text(
+                "Completed",
+                style: CustomTextStyles.titleMediumSemiBold,
+              ),
             ),
           ),
           Spacer(
@@ -131,9 +155,17 @@ Stack _bookNewLoungeButton(BuildContext context) {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 2.v),
-            child: Text(
-              "Cancelled",
-              style: CustomTextStyles.titleMediumPrimarySemiBold,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookingCancelledScreen()),
+                );
+              },
+              child: Text(
+                "Cancelled",
+                style: CustomTextStyles.titleMediumPrimarySemiBold,
+              ),
             ),
           ),
         ],
@@ -143,8 +175,8 @@ Stack _bookNewLoungeButton(BuildContext context) {
 
   Widget _buildTickets(BuildContext context) {
     return ListView.separated(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      shrinkWrap: false,
       separatorBuilder: (
         context,
         index,
@@ -161,10 +193,17 @@ Stack _bookNewLoungeButton(BuildContext context) {
           ),
         );
       },
-      itemCount: 2,
+      itemCount: 5,
       itemBuilder: (context, index) {
         return TicketsItemWidget();
       },
+    );
+  }
+
+  onTapSearchIcon(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SearchPage()),
     );
   }
 }
