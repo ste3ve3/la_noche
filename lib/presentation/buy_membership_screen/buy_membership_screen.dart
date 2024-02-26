@@ -14,20 +14,23 @@ class BuyMembershipScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            appBar: _buildAppBar(context),
-            body: SingleChildScrollView(
-              child: Container(
-                  width: double.maxFinite,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 24.h, vertical: 23.v),
-                  child: Column(children: [
-                    _buildBasicPlanCard(context),
-                    SizedBox(height: 28.v),
-                    _buildPremiumPlanCard(context),
-                    SizedBox(height: 28.v),
-                  ])),
-            ),
-            ));
+      appBar: _buildAppBar(context),
+      body: SingleChildScrollView(
+        child: Container(
+            width: double.maxFinite,
+            padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 23.v),
+            child: Column(children: [
+              _buildBasicPlanCard(context),
+              SizedBox(height: 28.v),
+              _buildPremiumPlanCard(context),
+              SizedBox(height: 28.v),
+              _buildOrDivider(context),
+              SizedBox(height: 28.v),
+              _buildSocial(context),
+              SizedBox(height: 28.v),
+            ])),
+      ),
+    ));
   }
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
@@ -50,165 +53,163 @@ class BuyMembershipScreen extends StatelessWidget {
         decoration: AppDecoration.fillBlueGray
             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder16),
         child: Column(
-          mainAxisSize: MainAxisSize.min, 
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-          Text(
-            "Basic Plan",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top:20.0),
-                child: Text(
-                  "\$",
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-              ),
               Text(
-                "9.99",
+                "Basic Plan",
                 style: TextStyle(
-                  fontSize: 45,
                   fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top:20.0),
-                child: Text(
-                  "/year",
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              SizedBox(height: 20.v),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.close, color: Colors.red),
-                  SizedBox(width: 8),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      "\$",
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
                   Text(
-                    "Access to all lounge facilities.",
+                    "9.99",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 45,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      "/year",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 20.v),
-              Row(
+              Column(
                 children: [
-                  Icon(Icons.close, color: Colors.red),
-                  SizedBox(width: 8),
-                  Text(
-                    "Priority Access",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.close, color: Colors.red),
+                      SizedBox(width: 8),
+                      Text(
+                        "Access to all lounge facilities.",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.close, color: Colors.red),
+                      SizedBox(width: 8),
+                      Text(
+                        "Priority Access",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.close, color: Colors.red),
+                      SizedBox(width: 8),
+                      Text(
+                        "Personalized Updates",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Services Discounts",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Exclusive Events and Offers",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Flexible Booking Changes",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Loyalty Program",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "24/7 Customer Support",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.close, color: Colors.red),
-                  SizedBox(width: 8),
-                  Text(
-                    "Personalized Updates",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Services Discounts",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Exclusive Events and Offers",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Flexible Booking Changes",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Loyalty Program",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "24/7 Customer Support",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 25.v),
-          CustomElevatedButton(
-            height: 58.v,
-            width: 263.h,
-            text: "Book Now!",
-            margin: EdgeInsets.only(left: 17.h),
-            buttonStyle: CustomButtonStyles.outlineGreenAF,
-            onPressed: () {
-              onTapBookNow(context);
-            })
-        ]));
+              SizedBox(height: 25.v),
+              CustomElevatedButton(
+                  height: 58.v,
+                  width: 263.h,
+                  text: "Book Now!",
+                  margin: EdgeInsets.only(left: 17.h),
+                  buttonStyle: CustomButtonStyles.outlineGreenAF,
+                  onPressed: () {})
+            ]));
   }
 
   Widget _buildPremiumPlanCard(BuildContext context) {
@@ -217,168 +218,203 @@ class BuyMembershipScreen extends StatelessWidget {
         decoration: AppDecoration.fillBlueGray
             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder16),
         child: Column(
-          mainAxisSize: MainAxisSize.min, 
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-          Text(
-            "Premium Plan",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top:20.0),
-                child: Text(
-                  "\$",
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-              ),
               Text(
-                "26.4",
+                "Premium Plan",
                 style: TextStyle(
-                  fontSize: 45,
                   fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top:20.0),
-                child: Text(
-                  "/year",
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              SizedBox(height: 20.v),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      "\$",
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
                   Text(
-                    "Access to all lounge facilities.",
+                    "26.4",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 45,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      "/year",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 20.v),
-              Row(
+              Column(
                 children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Priority Access",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Access to all lounge facilities.",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Priority Access",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Personalized Updates",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Services Discounts",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Exclusive Events and Offers",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Flexible Booking Changes",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "Loyalty Program",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.v),
+                  Row(
+                    children: [
+                      Icon(Icons.check, color: Colors.green),
+                      SizedBox(width: 8),
+                      Text(
+                        "24/7 Customer Support",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Personalized Updates",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Services Discounts",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Exclusive Events and Offers",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Flexible Booking Changes",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Loyalty Program",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.v),
-              Row(
-                children: [
-                  Icon(Icons.check, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "24/7 Customer Support",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 25.v),
-          CustomElevatedButton(
-            height: 58.v,
-            width: 263.h,
-            text: "Book Now!",
-            margin: EdgeInsets.only(left: 17.h),
-            buttonStyle: CustomButtonStyles.outlineGreenAF,
-            onPressed: () {
-              onTapBookNow(context);
-            })
-        ]));
+              SizedBox(height: 25.v),
+              CustomElevatedButton(
+                  height: 58.v,
+                  width: 263.h,
+                  text: "Book Now!",
+                  margin: EdgeInsets.only(left: 17.h),
+                  buttonStyle: CustomButtonStyles.outlineGreenAF,
+                  onPressed: () {})
+            ]));
   }
 
-onTapBookNow(BuildContext context) {
+  Widget _buildOrDivider(BuildContext context) {
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.h),
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Padding(
+                  padding: EdgeInsets.only(top: 11.v, bottom: 9.v),
+                  child: SizedBox(width: 96.h, child: Divider())),
+              Text("or", style: CustomTextStyles.titleMediumGray50),
+              Padding(
+                  padding: EdgeInsets.only(top: 11.v, bottom: 9.v),
+                  child: SizedBox(width: 96.h, child: Divider()))
+            ]));
+  }
+
+  Widget _buildSocial(BuildContext context) {
+    return Column(children: [
+      CustomElevatedButton(
+          height: 60.v,
+          text: "Continue as a Guest",
+          leftIcon: Container(
+              margin: EdgeInsets.only(right: 11.h),
+              child: Icon(
+                Icons.person,
+                color: theme.colorScheme.primary,
+                size: 23,
+              )),
+          buttonStyle: CustomButtonStyles.fillBlueGrayTL16,
+          buttonTextStyle: CustomTextStyles.titleMediumSemiBold,
+          onPressed: () {
+            onTapGuestMode(context);
+          }),
+    ]);
+  }
+
+  onTapGuestMode(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.homeScreenContainerScreen);
   }
 

@@ -7,7 +7,10 @@ import 'package:la_noche/widgets/app_bar/appbar_leading_image.dart';
 import 'package:la_noche/widgets/app_bar/appbar_title.dart';
 import 'package:la_noche/widgets/app_bar/appbar_trailing_image.dart';
 import 'package:la_noche/widgets/app_bar/custom_app_bar.dart';
+import 'package:la_noche/widgets/custom_ad_widget.dart';
+import 'package:la_noche/widgets/custom_ads_banner.dart';
 import 'package:la_noche/widgets/custom_search_view.dart';
+import 'package:la_noche/widgets/custom_small_ad_widget.dart';
 
 class HomeScreenTabContainerPage extends StatefulWidget {
   const HomeScreenTabContainerPage({Key? key}) : super(key: key);
@@ -47,6 +50,36 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
                               padding: EdgeInsets.only(left: 24.h),
                               child: Text("Hello, Steve 👋",
                                   style: theme.textTheme.headlineLarge))),
+                      SizedBox(height: 20.v),
+                      CustomAdsBanner(
+                        ads: [
+                          CustomSmallAdWidget(
+                            imageUrl:
+                                'http://filemanager.ric-house.com/file/0ca2y7ef7.jpeg',
+                            title: 'Advertisment Title 1',
+                            description:
+                                'Add a guest mode feature where someone will be able to view some basic functions without having a membership',
+                            url: 'https://www.google.com',
+                          ),
+                          CustomSmallAdWidget(
+                            imageUrl:
+                                'http://filemanager.ric-house.com/file/0ca2y7ef7.jpeg',
+                            title: 'Advertisment Title 2',
+                            description:
+                                'Remove the popular and trending menus and Add a Menu Tab that will contain some drinks or other stuffs on the menus',
+                            url: 'https://www.google.com',
+                          ),
+                          CustomSmallAdWidget(
+                            imageUrl:
+                                'http://filemanager.ric-house.com/file/0ca2y7ef7.jpeg',
+                            title: 'Advertisment Title 3',
+                            description:
+                                ' Add an events ( Trending ) feature which which will show the events in the lounge',
+                            url: 'https://www.google.com',
+                          ),
+                        ],
+                        bannerHorizontalSpacing: 20,
+                      ),
                       SizedBox(height: 23.v),
                       Padding(
                           padding: EdgeInsets.symmetric(horizontal: 24.h),
@@ -64,11 +97,10 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
                                 HomeScreenPage(),
                                 HomeScreenPage(),
                                 HomeScreenPage()
-                              ]))
+                              ])),
                     ])))));
   }
 
-  
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
         height: 76.v,
@@ -88,19 +120,18 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
         title: AppbarTitle(text: "La noche", margin: EdgeInsets.only(top: 5)),
         actions: [
           AppbarTrailingImage(
-              imagePath: ImageConstant.imgIcons,
-              margin: EdgeInsets.only(left: 24.h, top: 9.v, right: 11.h),
-              onTap: onTapNotificationIcon,
-              ),
+            imagePath: ImageConstant.imgIcons,
+            margin: EdgeInsets.only(left: 24.h, top: 9.v, right: 11.h),
+            onTap: onTapNotificationIcon,
+          ),
           AppbarTrailingImage(
-              imagePath: ImageConstant.imgBookmark,
-              margin: EdgeInsets.only(left: 24.h, top: 9.v, right: 35.h),
-              onTap: onTapBookmarkIcon,
-              ),
+            imagePath: ImageConstant.imgBookmark,
+            margin: EdgeInsets.only(left: 24.h, top: 9.v, right: 35.h),
+            onTap: onTapBookmarkIcon,
+          ),
         ]);
   }
 
-  
   Widget _buildTabview(BuildContext context) {
     return Container(
         height: 38.v,
@@ -155,6 +186,7 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
       MaterialPageRoute(builder: (context) => NotificationsScreen()),
     );
   }
+
   onTapBookmarkIcon(BuildContext context) {
     Navigator.push(
       context,

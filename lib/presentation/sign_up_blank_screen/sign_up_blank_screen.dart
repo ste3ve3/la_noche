@@ -6,7 +6,6 @@ import 'package:la_noche/widgets/custom_checkbox_button.dart';
 import 'package:la_noche/widgets/custom_elevated_button.dart';
 import 'package:la_noche/widgets/custom_text_form_field.dart';
 
-
 // ignore_for_file: must_be_immutable
 class SignUpBlankScreen extends StatelessWidget {
   SignUpBlankScreen({Key? key}) : super(key: key);
@@ -99,6 +98,38 @@ class SignUpBlankScreen extends StatelessWidget {
       CustomTextFormField(
           autofocus: false,
           controller: emailController,
+          hintText: "First Name",
+          textInputType: TextInputType.emailAddress,
+          prefix: Container(
+              margin: EdgeInsets.fromLTRB(20.h, 20.v, 12.h, 20.v),
+              child: Icon(
+                Icons.person,
+                color: Colors.grey[400],
+                size: 20,
+              )),
+          prefixConstraints: BoxConstraints(maxHeight: 60.v),
+          contentPadding:
+              EdgeInsets.only(top: 21.v, right: 30.h, bottom: 21.v)),
+      SizedBox(height: 24.v),
+      CustomTextFormField(
+          autofocus: false,
+          controller: emailController,
+          hintText: "Last Name",
+          textInputType: TextInputType.emailAddress,
+          prefix: Container(
+              margin: EdgeInsets.fromLTRB(20.h, 20.v, 12.h, 20.v),
+              child: Icon(
+                Icons.person,
+                color: Colors.grey[400],
+                size: 20,
+              )),
+          prefixConstraints: BoxConstraints(maxHeight: 60.v),
+          contentPadding:
+              EdgeInsets.only(top: 21.v, right: 30.h, bottom: 21.v)),
+      SizedBox(height: 24.v),
+      CustomTextFormField(
+          autofocus: false,
+          controller: emailController,
           hintText: "Email",
           textInputType: TextInputType.emailAddress,
           prefix: Container(
@@ -156,13 +187,13 @@ class SignUpBlankScreen extends StatelessWidget {
           suffixConstraints: BoxConstraints(maxHeight: 60.v),
           obscureText: true,
           contentPadding: EdgeInsets.symmetric(vertical: 21.v)),
-              SizedBox(height: 24.v),
-              CustomElevatedButton(
-                text: "Sign Up",
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.fillProfileScreen);
-                },
-              ),
+      SizedBox(height: 24.v),
+      CustomElevatedButton(
+        text: "Sign Up",
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoutes.fillProfileScreen);
+        },
+      ),
     ]);
   }
 

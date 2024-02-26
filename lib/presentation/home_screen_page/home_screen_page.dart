@@ -1,4 +1,6 @@
 import 'package:la_noche/presentation/recently_booked_screen/recently_booked_screen.dart';
+import 'package:la_noche/widgets/custom_ad_widget.dart';
+import 'package:la_noche/widgets/custom_ads_banner.dart';
 
 import '../home_screen_page/widgets/hotels_item_widget.dart';
 import '../home_screen_page/widgets/sixty_item_widget.dart';
@@ -33,12 +35,38 @@ class HomeScreenPageState extends State<HomeScreenPage>
                           child: Column(children: [
                             _buildHotels(context),
                             SizedBox(height: 34.v),
-                            _buildRecentlyBooked(context)
+                            CustomAdsBanner(
+                              ads: [
+                                CustomAdWidget(
+                                  imageUrl:
+                                      'http://filemanager.ric-house.com/file/0ca2y7ef7.jpeg',
+                                  title: 'Your Restaurant Name',
+                                  description:
+                                      'Visit us for delicious meals and great ambiance, Visit us for delicious meals and great ambiance, Visit us for delicious meals and great ambiance!',
+                                ),
+                                CustomAdWidget(
+                                  imageUrl:
+                                      'http://filemanager.ric-house.com/file/0ca2y7ef7.jpeg',
+                                  title: 'Your Restaurant Name',
+                                  description:
+                                      'Visit us for delicious meals and great ambiance, Visit us for delicious meals and great ambiance, Visit us for delicious meals and great ambiance!',
+                                ),
+                                CustomAdWidget(
+                                  imageUrl:
+                                      'http://filemanager.ric-house.com/file/0ca2y7ef7.jpeg',
+                                  title: 'Your Restaurant Name',
+                                  description:
+                                      'Visit us for delicious meals and great ambiance, Visit us for delicious meals and great ambiance, Visit us for delicious meals and great ambiance!',
+                                ),
+                              ],
+                              bannerHeight: 320,
+                            ),
+                            SizedBox(height: 34.v),
+                            _buildRecentlyBooked(context),
                           ])))
                 ])))));
   }
 
-  
   Widget _buildHotels(BuildContext context) {
     return SizedBox(
         height: 400.v,
@@ -53,7 +81,6 @@ class HomeScreenPageState extends State<HomeScreenPage>
             }));
   }
 
-  
   Widget _buildRecentlyBooked(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(

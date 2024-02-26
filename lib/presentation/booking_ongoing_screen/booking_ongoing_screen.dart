@@ -105,7 +105,8 @@ class BookingOngoingScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BookingOngoingScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => BookingOngoingScreen()),
                       );
                     },
                     child: Text("Ongoing",
@@ -118,7 +119,8 @@ class BookingOngoingScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BookingCompletedPage()),
+                        MaterialPageRoute(
+                            builder: (context) => BookingCompletedPage()),
                       );
                     },
                     child: Text("Completed",
@@ -131,7 +133,8 @@ class BookingOngoingScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BookingCancelledScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => BookingCancelledScreen()),
                       );
                     },
                     child: Text("Cancelled",
