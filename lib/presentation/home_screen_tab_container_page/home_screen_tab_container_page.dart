@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:la_noche/core/app_export.dart';
 import 'package:la_noche/presentation/home_screen_page/home_screen_page.dart';
@@ -26,6 +29,7 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
   TextEditingController searchController = TextEditingController();
 
   late TabController tabviewController;
+  int currentIndex = 0;
 
   @override
   void initState() {
@@ -35,6 +39,15 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
 
   @override
   Widget build(BuildContext context) {
+    final services = [
+      serviceWidget(Icons.shop, "Shop"),
+      serviceWidget(Icons.menu_book, "Menu"),
+      serviceWidget(Icons.event, "Events"),
+      serviceWidget(Icons.people, "Invite"),
+      serviceWidget(Icons.local_cafe, "Cafe"),
+    ];
+    final dotsCount = (services.length / 2).ceil();
+
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -50,7 +63,16 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
                               padding: EdgeInsets.only(left: 24.h),
                               child: Text("Hello, Steve 👋",
                                   style: theme.textTheme.headlineLarge))),
-                      SizedBox(height: 20.v),
+                      SizedBox(height: 7.v),
+                      availableServices(dotsCount, services, context),
+                      // SizedBox(height: 20.v),
+                      // Padding(
+                      //     padding: EdgeInsets.symmetric(horizontal: 24.h),
+                      //     child: CustomSearchView(
+                      //         autofocus: false,
+                      //         controller: searchController,
+                      //         hintText: "Search for anything...")),
+                      SizedBox(height: 23.v),
                       CustomAdsBanner(
                         ads: [
                           CustomSmallAdWidget(
@@ -80,13 +102,6 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
                         ],
                         bannerHorizontalSpacing: 20,
                       ),
-                      SizedBox(height: 23.v),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 24.h),
-                          child: CustomSearchView(
-                              autofocus: false,
-                              controller: searchController,
-                              hintText: "Search")),
                       SizedBox(height: 31.v),
                       _buildTabview(context),
                       SizedBox(
@@ -99,6 +114,46 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
                                 HomeScreenPage()
                               ])),
                     ])))));
+  }
+
+  Column availableServices(
+      int dotsCount, List<Widget> services, BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 120,
+          child: NotificationListener<ScrollNotification>(
+            onNotification: (ScrollNotification notification) {
+              if (notification is ScrollUpdateNotification) {
+                setState(() {
+                  currentIndex = max(
+                      0,
+                      min((notification.metrics.pixels / 160).round(),
+                          dotsCount - 1));
+                });
+              }
+              return true;
+            },
+            child: GridView.count(
+              scrollDirection: Axis.horizontal,
+              crossAxisCount: 1,
+              children: services,
+            ),
+          ),
+        ),
+        DotsIndicator(
+          dotsCount: dotsCount,
+          position: currentIndex.toDouble().toInt(),
+          decorator: DotsDecorator(
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeColor: Theme.of(context).primaryColor,
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ),
+      ],
+    );
   }
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
@@ -130,6 +185,28 @@ class HomeScreenTabContainerPageState extends State<HomeScreenTabContainerPage>
             onTap: onTapBookmarkIcon,
           ),
         ]);
+  }
+
+  Widget serviceWidget(IconData icon, String title) {
+    return Container(
+      width: 0,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          CircleAvatar(
+            backgroundColor: appTheme.black900,
+            radius: 30,
+            child: Icon(icon, size: 30, color: appTheme.cyan300),
+          ),
+          SizedBox(height: 10),
+          Text(title,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: appTheme.cyan300)),
+        ],
+      ),
+    );
   }
 
   Widget _buildTabview(BuildContext context) {
